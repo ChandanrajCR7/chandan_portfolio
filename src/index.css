@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-mono: 'Fira Code', ui-monospace, monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "Fira Code", ui-monospace, monospace;
 }
 
 html {
@@ -11,14 +11,21 @@ html {
 
 body {
   margin: 0;
-  background-color: #030712;
-  font-family: 'Inter', system-ui, sans-serif;
+  background-color: #ffffff;
+  color: #111827;
+  font-family: "Inter", system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+html.dark body {
+  background-color: #030712;
+  color: #f9fafb;
 }
 
 #root {
   min-height: 100vh;
 }
-
-
