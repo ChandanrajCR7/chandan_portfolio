@@ -115,60 +115,66 @@ export default function About({ theme }) {
         </motion.div>
 
         {/* ── Row 1: Avatar + Bio ─────────────────────────────────────────── */}
-        <div className="mb-12">
+        <div className="flex flex-col md:flex-row items-start gap-10 mb-12">
 
-          {/* Left — Avatar + Bio */}
+          {/* Left — Photo */}
           <motion.div
             variants={fadeLeft}
             initial="hidden"
             whileInView="visible"
             viewport={viewport}
+            className="shrink-0 mx-auto md:mx-0"
           >
-            {/* Photo — blends into section background */}
-            <div className="flex justify-center md:justify-start mb-6">
-              <div className="relative" style={{ width: "260px", height: "340px" }}>
+            <div className="relative" style={{ width: "260px", height: "340px" }}>
+              {/* Deep purple glow blob behind the person */}
+              <div
+                className="absolute inset-0 -z-10 blur-3xl"
+                style={{
+                  background: "radial-gradient(ellipse 80% 70% at 50% 40%, rgba(168,85,247,0.45) 0%, rgba(109,40,217,0.2) 50%, transparent 80%)",
+                }}
+              />
 
-                {/* Deep purple glow blob behind the person */}
-                <div
-                  className="absolute inset-0 -z-10 blur-3xl"
-                  style={{
-                    background: "radial-gradient(ellipse 80% 70% at 50% 40%, rgba(168,85,247,0.45) 0%, rgba(109,40,217,0.2) 50%, transparent 80%)",
-                  }}
+              {/* Photo with bottom + side fade into background */}
+              <div
+                className="w-full h-full overflow-hidden"
+                style={{
+                  maskImage:
+                    "linear-gradient(to bottom, black 0%, black 55%, transparent 100%), " +
+                    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                  maskComposite: "intersect",
+                  WebkitMaskImage:
+                    "linear-gradient(to bottom, black 0%, black 55%, transparent 100%), " +
+                    "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
+                  WebkitMaskComposite: "source-in",
+                }}
+              >
+                <img
+                  src={chandanImg}
+                  alt="Chandan Raj"
+                  className="w-full h-full object-cover object-top"
+                  style={{ objectPosition: "50% 8%" }}
                 />
-
-                {/* Photo with bottom + side fade into background */}
-                <div
-                  className="w-full h-full overflow-hidden"
-                  style={{
-                    maskImage:
-                      "linear-gradient(to bottom, black 0%, black 55%, transparent 100%), " +
-                      "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-                    maskComposite: "intersect",
-                    WebkitMaskImage:
-                      "linear-gradient(to bottom, black 0%, black 55%, transparent 100%), " +
-                      "linear-gradient(to right, transparent 0%, black 12%, black 88%, transparent 100%)",
-                    WebkitMaskComposite: "source-in",
-                  }}
-                >
-                  <img
-                    src={chandanImg}
-                    alt="Chandan Raj"
-                    className="w-full h-full object-cover object-top"
-                    style={{ objectPosition: "50% 8%" }}
-                  />
-                </div>
-
-                {/* Available dot */}
-                <span className="absolute top-3 right-3 flex h-3.5 w-3.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
-                  <span
-                    className="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500"
-                    style={{ boxShadow: "0 0 0 2px #111827" }}
-                  />
-                </span>
               </div>
-            </div>
 
+              {/* Available dot */}
+              <span className="absolute top-3 right-3 flex h-3.5 w-3.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-70" />
+                <span
+                  className="relative inline-flex rounded-full h-3.5 w-3.5 bg-green-500"
+                  style={{ boxShadow: "0 0 0 2px #111827" }}
+                />
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Right — Name + Title + Bio */}
+          <motion.div
+            variants={fadeRight}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewport}
+            className="flex-1 pt-2"
+          >
             {/* Name + Title */}
             <h3 className={`text-2xl font-bold mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
               Chandan Raj
